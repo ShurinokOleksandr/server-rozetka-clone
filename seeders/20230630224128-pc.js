@@ -33,11 +33,11 @@ module.exports = {
                 pc_manufactures:
                     pcManufactures[
                         Math.floor(Math.random() * pcManufactures.length)
-                    ],
+                        ],
                 parts_manufactures:
                     partsManufactures[
                         Math.floor(Math.random() * partsManufactures.length)
-                    ],
+                        ],
                 price: faker.random.numeric(4),
                 name: faker.lorem.sentence(2),
                 description: faker.lorem.sentence(10),

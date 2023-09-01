@@ -38,4 +38,5 @@ export class PcModel extends Model {
         popularity: number
     @Column
         compatibity:string
+
 }
