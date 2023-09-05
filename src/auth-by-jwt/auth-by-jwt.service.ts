@@ -35,7 +35,16 @@ export class AuthByJwtService {
 
     async signIn(signInDto) {
         const user  = await this.validateUser(signInDto)
-        return this.generateToken(user)
+        console.log(signInDto)
+        const token = await this.generateToken(user)
+        const userData = {
+            user:{
+                username:user.username,
+                email:user.email,
+            },
+            ...token
+        }
+        return userData
 
     }
 
