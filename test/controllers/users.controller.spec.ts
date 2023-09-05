@@ -7,7 +7,6 @@ import { databaseConfig } from "../../src/config/configuration";
 import { UsersModule } from "src/users/users.module";
 import { AuthModule } from "../../src/auth/auth.module";
 import { PcModule } from "../../src/pc/pc.module";
-import { ShoppingCartModule } from "../../src/shopping-cart/shopping-cart.module";
 import { User } from "../../src/users/users.model";
 import * as bcrypt from "bcrypt";
 import * as request from 'supertest'

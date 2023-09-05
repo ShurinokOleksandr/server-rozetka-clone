@@ -1,7 +1,21 @@
-import { Column, Model, DataType, Default, Table, ForeignKey, BelongsTo, HasMany } from "sequelize-typescript";
+import {
+    Column,
+    Model,
+    DataType,
+    Default,
+    Table,
+    ForeignKey,
+    BelongsTo,
+    HasMany,
+    PrimaryKey, AutoIncrement
+} from "sequelize-typescript";
 
 @Table
 export class CommentsModel extends Model {
+    @PrimaryKey
+    @Column(DataType.UUID)
+    id: string;
+
     @Default(DataType.UUIDV4)
     @Default(DataType.NOW)
     @Column
@@ -10,28 +24,27 @@ export class CommentsModel extends Model {
     @Column
     updatedAt: Date;
 
-    @Column
-    text: string;
+    @Column(DataType.STRING)
+    comment: string;
 
-    @Column({
-        primaryKey: true,
-        autoIncrement: true,
-    })
-    id: number;
+    @Column(DataType.INTEGER)
+    postId: number;
 
     @ForeignKey(() => CommentsModel)
-    @Column
-    parentId: number;
+    @Column({
+         allowNull: true,
+     type: DataType.UUID
+    })
+    parentId: string | null;// чилдрена нету
 
     @BelongsTo(() => CommentsModel, 'parentId')
     parent: CommentsModel;
 
     @HasMany(() => CommentsModel, 'parentId')
     children: CommentsModel[];
-
-    @Column
-    productId: string;
 }
+// npx sequelize-cli model:generate --name Comment --attributes createdAt:Date,updatedAt:Date,comment:string,text:string,id:number,parentId:string,parent:string,children:string,postId:number
+
 
 
 

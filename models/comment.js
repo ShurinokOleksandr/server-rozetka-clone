@@ -14,13 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comment.init({
-    id: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
+    comment: DataTypes.STRING,
     text: DataTypes.STRING,
+    id: DataTypes.STRING,
     parentId: DataTypes.STRING,
+    parent: DataTypes.STRING,
     children: DataTypes.STRING,
-    productId: DataTypes.NUMBER
+    postId: DataTypes.NUMBER
   }, {
     sequelize,
     modelName: 'Comment',

@@ -6,12 +6,13 @@ export class CommentsController {
     constructor(private readonly commentService: CommentsService) {
     }
     @Get(':com')
-    comm(@Param('com') com){
-        return this.commentService.comm(com)
+    getCommentAndChildren(@Param('com') com){
+        return this.commentService.getCommentAndChildren(com)
     }
 
     @Post('create')
     createParentCom(){
         return this.commentService.createParentComment()
     }
+
 }
