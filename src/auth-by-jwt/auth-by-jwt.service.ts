@@ -26,9 +26,15 @@ export class AuthByJwtService {
         newUser.username = createUserDto.username;
         newUser.password = hashedPassword;
         newUser.email = createUserDto.email;
-
+        const token = await this.generateToken(createUserDto)
         await newUser.save()
-        return this.generateToken(createUserDto)
+        return   {
+            ...token,
+            user:{
+                username: newUser.username,
+                email: newUser.email,
+            }
+        }
     }
 
 
